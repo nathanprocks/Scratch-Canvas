@@ -65,9 +65,9 @@
             hex = colour.toString(16);
         }
         while (hex.length < 6) {
-            hex = "0" + hex;
+            hex = '0' + hex;
         }
-        return "#" + hex;
+        return '#' + hex;
     };
 
     ext.convertXCoordinate = function(x) {
