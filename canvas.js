@@ -102,6 +102,10 @@
         ctx.lineTo(x, y);
     };
 
+    ext.lineCap = function(cap) {
+        ctx.lineCap = cap;
+    };
+
     ext.lineWidth = function(width) {
         ctx.lineWidth = width;
     };
@@ -173,6 +177,7 @@
             [' ', 'fill style %s', 'fillStyle', 'red'],
             [' ', 'stroke style %s', 'strokeStyle', 'blue'],
             [' ', 'line width %n', 'lineWidth', 10],
+            [' ', 'line cap %m.lineCap', 'lineCap', 'butt'],
             ['r', 'colour %c to hex', 'colour'],
             [' ', 'set alpha to %n%', 'setAlpha', '50'],
             [' ', 'translate x: %n y: %n', 'translate', 10, 10],
@@ -199,6 +204,7 @@
         menus: {
             angleUnit: ['degrees', 'radians'],
             arcDirection: ['clockwise', 'anticlockwise'],
+            lineCap: ['butt', 'round', 'square'],
             textAlignment: ['start', 'end', 'left', 'center', 'right'],
             textBaseline: ['top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom']
         }
