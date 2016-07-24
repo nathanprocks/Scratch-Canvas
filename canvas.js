@@ -46,7 +46,7 @@
     };
 
     ext.clear = function() {
-        canvas.width = canvas.width;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
 
     ext.clearRect = function(x, y, w, h) {
