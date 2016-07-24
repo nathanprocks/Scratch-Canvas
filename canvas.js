@@ -106,8 +106,24 @@
         ctx.lineCap = cap;
     };
 
+    ext.lineDash = function(dash) {
+        ctx.setLineDash(dash.split(','));
+    };
+
+    ext.lineDashOffset = function(offset) {
+        ctx.lineDashOffset = offset;
+    };
+
+    ext.lineJoin = function(join) {
+        ctx.lineJoin = join;
+    };
+
     ext.lineWidth = function(width) {
         ctx.lineWidth = width;
+    };
+
+    ext.miterLimit = function(limit) {
+        ctx.miterLimit = limit;
     };
 
     ext.moveTo = function(x, y) {
@@ -178,6 +194,10 @@
             [' ', 'stroke style %s', 'strokeStyle', 'blue'],
             [' ', 'line width %n', 'lineWidth', 10],
             [' ', 'line cap %m.lineCap', 'lineCap', 'butt'],
+            [' ', 'line join %m.lineJoin', 'lineJoin', 'miter'],
+            [' ', 'miter limit %n', 'miterLimit', 10],
+            [' ', 'line dash %s', 'lineDash', '5, 5, 15, 5'],
+            [' ', 'line dash offset %n', 'lineDashOffset', 2],
             ['r', 'colour %c to hex', 'colour'],
             [' ', 'set alpha to %n%', 'setAlpha', '50'],
             [' ', 'translate x: %n y: %n', 'translate', 10, 10],
@@ -205,6 +225,7 @@
             angleUnit: ['degrees', 'radians'],
             arcDirection: ['clockwise', 'anticlockwise'],
             lineCap: ['butt', 'round', 'square'],
+            lineJoin: ['miter', 'bevel', 'round'],
             textAlignment: ['start', 'end', 'left', 'center', 'right'],
             textBaseline: ['top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom']
         }
