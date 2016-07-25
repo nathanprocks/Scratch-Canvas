@@ -113,7 +113,7 @@
     };
 
     ext.gradientAddColourStop = function(name, colour, stop) {
-        gradients[name].addColorStop(stop, colour);
+        gradients[name].addColorStop(stop/100, colour);
     };
 
     ext.lineTo = function(x, y) {
