@@ -25,6 +25,8 @@
     document.body.appendChild(stage);
     var stageCtx = stage.getContext('2d');
 
+    var gradients = {};
+
     ext._shutdown = function() {
         document.body.removeChild(stage);
     };
@@ -78,6 +80,14 @@
         return y * -1 + 180;
     };
 
+    ext.createLinearGradient = function(name, x1, y1, x2, y2) {
+        gradients[name] = ctx.createLinearGradient(x1, y1, x2, y2);
+    };
+
+    ext.createRadialGradient = function(name, x1, y1, r1, x2, y2, r2) {
+        gradients[name] = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);
+    };
+
     ext.fillRect = function(x, y, w, h) {
         ctx.fillRect(x, y, w, h);
     };
@@ -86,8 +96,12 @@
         ctx.fill();
     };
 
-    ext.fillStyle = function(style) {
-        ctx.fillStyle = style;
+    ext.fillStyleColour = function(colour) {
+        ctx.fillStyle = colour;
+    };
+
+    ext.fillStyleGradient = function(name) {
+        ctx.fillStyle = gradients[name];
     };
 
     ext.fillText = function(text, x, y) {
@@ -96,6 +110,10 @@
 
     ext.font = function(font) {
         ctx.font = font;
+    };
+
+    ext.gradientAddColourStop = function(name, colour, stop) {
+        gradients[name].addColorStop(stop, colour);
     };
 
     ext.lineTo = function(x, y) {
@@ -160,8 +178,12 @@
         ctx.strokeRect(x, y, w, h);
     };
 
-    ext.strokeStyle = function(style) {
+    ext.strokeStyleColour = function(style) {
         ctx.strokeStyle = style;
+    };
+
+    ext.strokeStyleGradient = function(name) {
+        ctx.strokeStyle = gradients[name];
     };
 
     ext.strokeText = function(text, x, y) {
@@ -188,10 +210,15 @@
         blocks: [
             [' ', 'clear canvas', 'clear'],
             [' ', 'refresh canvas', 'refresh'],
-            ['r', 'x: %n as scratch coordinate', 'convertXCoordinate', 0],
-            ['r', 'y: %n as scratch coordinate', 'convertYCoordinate', 0],
-            [' ', 'fill style %s', 'fillStyle', 'red'],
-            [' ', 'stroke style %s', 'strokeStyle', 'blue'],
+            ['r', 'convert scratch coordinate x: %n', 'convertXCoordinate', 0],
+            ['r', 'convert scratch coordinate -y: %n', 'convertYCoordinate', 0],
+            [' ', 'fill colour %s', 'fillStyleColour', 'red'],
+            [' ', 'stroke colour %s', 'strokeStyleColour', 'blue'],
+            [' ', 'fill gradient %s', 'fillStyleGradient', 'gradient1'],
+            [' ', 'stroke gradient %s', 'strokeStyleGradient', 'gradient1'],
+            [' ', 'create linear gradient %s x1: %n y1: %n x2: %n y2: %n', 'createLinearGradient', 'gradient1', 10, 10, 200, 100],
+            [' ', 'create radial gradient %s x1: %n y1: %n r1: %n x2: %n y2: %n r2: %n', 'createRadialGradient', 'gradient1', 50, 50, 50, 50, 50, 0],
+            [' ', 'gradient %s add colour %s at stop %n%', 'gradientAddColourStop', 'gradient1', 'green', 50],
             [' ', 'line width %n', 'lineWidth', 10],
             [' ', 'line cap %m.lineCap', 'lineCap', 'butt'],
             [' ', 'line join %m.lineJoin', 'lineJoin', 'miter'],
