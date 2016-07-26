@@ -211,7 +211,7 @@
             [' ', 'clear canvas', 'clear'],
             [' ', 'refresh canvas', 'refresh'],
             ['r', 'convert scratch coordinate x: %n', 'convertXCoordinate', 0],
-            ['r', 'convert scratch coordinate -y: %n', 'convertYCoordinate', 0],
+            ['r', 'convert scratch coordinate y: %n', 'convertYCoordinate', 0],
             [' ', 'fill colour %s', 'fillStyleColour', 'red'],
             [' ', 'stroke colour %s', 'strokeStyleColour', 'blue'],
             [' ', 'fill gradient %s', 'fillStyleGradient', 'gradient1'],
