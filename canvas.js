@@ -175,7 +175,7 @@
     };
 
     ext.shadowColour = function(colour) {
-        ctx.shadowColour = colour;
+        ctx.shadowColor = colour;
     };
 
     ext.shadowOffsetX = function(offset) {
