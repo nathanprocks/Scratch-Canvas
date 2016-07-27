@@ -47,6 +47,10 @@
         ctx.beginPath();
     };
 
+    ext.bezierCurveTo = function(cp1x, cp1y, cp2x, cp2y, x, y) {
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+    };
+
     ext.clear = function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
@@ -254,6 +258,7 @@
             [' ', 'close path', 'closePath'],
             [' ', 'move to x: %n y: %n', 'moveTo', 20, 20],
             [' ', 'line to x: %n y: %n', 'lineTo', 100, 100],
+            [' ', 'bézier curve to cp1x: %n cp1y: %n cp2x: %n cp2y: %n x: %n y: %n', 'bezierCurveTo', 100, 100, 150, 50, 10, 10],
             [' ', 'arc x: %n y: %n radius: %n start angle: %n end angle: %n direction: %m.arcDirection', 'arc', 0, 0, 50, 0, 360, 'clockwise'],
             [' ', 'fill', 'fill'],
             [' ', 'stroke', 'stroke'],
