@@ -170,6 +170,22 @@
         ctx.globalAlpha = alpha/100;
     };
 
+    ext.shadowBlur = function(level) {
+        ctx.shadowBlur = level;
+    };
+
+    ext.shadowColour = function(colour) {
+        ctx.shadowColour = colour;
+    };
+
+    ext.shadowOffsetX = function(offset) {
+        ctx.shadowOffsetX = offset;
+    };
+
+    ext.shadowOffsetY = function(offset) {
+        ctx.shadowOffsetY = offset;
+    };
+
     ext.stroke = function() {
         ctx.stroke();
     };
@@ -241,6 +257,10 @@
             [' ', 'arc x: %n y: %n radius: %n start angle: %n end angle: %n direction: %m.arcDirection', 'arc', 0, 0, 50, 0, 360, 'clockwise'],
             [' ', 'fill', 'fill'],
             [' ', 'stroke', 'stroke'],
+            [' ', 'shadow blur %n', 'shadowBlur', 10],
+            [' ', 'shadow colour %n', 'shadowColour', 'black'],
+            [' ', 'shadow offset x %n', 'shadowOffsetX', 10],
+            [' ', 'shadow offset y %n', 'shadowOffsetY', 10],
             [' ', 'font %s', 'font', '48px serif'],
             [' ', 'text align %m.textAlignment', 'textAlign', 'start'],
             [' ', 'text baseline %m.textBaseline', 'textBaseline', 'alphabetic'],
