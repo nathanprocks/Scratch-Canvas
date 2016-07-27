@@ -258,7 +258,7 @@
             [' ', 'fill', 'fill'],
             [' ', 'stroke', 'stroke'],
             [' ', 'shadow blur %n', 'shadowBlur', 10],
-            [' ', 'shadow colour %n', 'shadowColour', 'black'],
+            [' ', 'shadow colour %s', 'shadowColour', 'black'],
             [' ', 'shadow offset x %n', 'shadowOffsetX', 10],
             [' ', 'shadow offset y %n', 'shadowOffsetY', 10],
             [' ', 'font %s', 'font', '48px serif'],
