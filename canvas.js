@@ -178,6 +178,10 @@
         ctx.globalAlpha = alpha/100;
     };
 
+    ext.setCompositeOperation = function(mode) {
+        ctx.globalCompositeOperation = mode;
+    };
+
     ext.shadowBlur = function(level) {
         ctx.shadowBlur = level;
     };
@@ -251,6 +255,7 @@
             [' ', 'line dash offset %n', 'lineDashOffset', 2],
             ['r', 'colour %c to hex', 'colour'],
             [' ', 'set alpha to %n%', 'setAlpha', '50'],
+            [' ', 'set composite operation to %m.compositeOperation', 'setCompositeOperation', 'source-over'],
             [' ', 'translate x: %n y: %n', 'translate', 10, 10],
             [' ', 'rotate %n %m.angleUnit at centre x: %n y: %n', 'rotate', 45, 'degrees', 240, 180],
             [' ', 'scale x: %n y: %n', 'scale', 1, -1],
@@ -281,6 +286,7 @@
         menus: {
             angleUnit: ['degrees', 'radians'],
             arcDirection: ['clockwise', 'anticlockwise'],
+            compositeOperation: ['source-over', 'source-in', 'source-out', 'source-atop', 'destination-over', 'destination-in', 'destination-out', 'destination-atop', 'lighter', 'copy', 'xor', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'],
             lineCap: ['butt', 'round', 'square'],
             lineJoin: ['miter', 'bevel', 'round'],
             textAlignment: ['start', 'end', 'left', 'center', 'right'],
