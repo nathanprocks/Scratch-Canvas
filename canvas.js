@@ -168,7 +168,7 @@
     };
 
     ext.refresh = function() {
-        stageCtx.putImageData(ctx.getImageData(0, 0, 480, 360), 0, 0);
+        stageCtx.drawImage(canvas, 0, 0);
     };
 
     ext.resetTransform = function() {
