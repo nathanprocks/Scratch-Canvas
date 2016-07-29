@@ -26,6 +26,7 @@
     var stageCtx = stage.getContext('2d');
 
     var gradients = {};
+    var images = {};
 
     ext._shutdown = function() {
         document.body.removeChild(stage);
@@ -88,12 +89,22 @@
         return y * -1 + 180;
     };
 
+    ext.createImageFromURL = function(name, url, callback) {
+        images[name] = new Image();
+        images[name].addEventListener('load', callback);
+        images[name].src = url;
+    };
+
     ext.createLinearGradient = function(name, x1, y1, x2, y2) {
         gradients[name] = ctx.createLinearGradient(x1, y1, x2, y2);
     };
 
     ext.createRadialGradient = function(name, x1, y1, r1, x2, y2, r2) {
         gradients[name] = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);
+    };
+
+    ext.drawImage = function(name, x, y) {
+        ctx.drawImage(images[name], x, y);
     };
 
     ext.fillRect = function(x, y, w, h) {
@@ -282,6 +293,8 @@
             [' ', 'fill text %s at x: %n y: %n', 'fillText', 'Hello, world!', 20, 20],
             [' ', 'stroke text %s at x: %n y: %n', 'strokeText', 'Hello, world!', 20, 20],
             ['r', 'width of text %s', 'textWidth', 'Hello, world!'],
+            ['w', 'create image %s from url %s', 'createImageFromURL', 'image1', 'https://raw.githubusercontent.com/raphamorim/origami.js/master/images/examples/text.png'],
+            [' ', 'draw image %s at x: %n y: %n', 'drawImage', 'image1', 100, 100],
         ],
         menus: {
             angleUnit: ['degrees', 'radians'],
