@@ -168,6 +168,7 @@
     };
 
     ext.refresh = function() {
+        stageCtx.clearRect(0, 0, canvas.width, canvas.height);
         stageCtx.drawImage(canvas, 0, 0);
     };
 
