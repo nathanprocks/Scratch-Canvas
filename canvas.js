@@ -108,7 +108,11 @@
     };
 
     ext.drawImage = function(name, x, y) {
-        ctx.drawImage(images[name], x, y);
+        if (images[name].toString() === '[object HTMLImageElement]') {
+            ctx.drawImage(images[name], x, y); // image from URL
+        } else {
+            ctx.putImageData(images[name], x, y); // image from rect
+        }
     };
 
     ext.fillRect = function(x, y, w, h) {
