@@ -89,6 +89,10 @@
         return y * -1 + 180;
     };
 
+    ext.createImageFromRect = function(name, x, y, w, h) {
+        images[name] = ctx.getImageData(x, y, w, x);
+    };
+
     ext.createImageFromURL = function(name, url, callback) {
         images[name] = new Image();
         images[name].addEventListener('load', callback);
@@ -295,6 +299,7 @@
             [' ', 'stroke text %s at x: %n y: %n', 'strokeText', 'Hello, world!', 20, 20],
             ['r', 'width of text %s', 'textWidth', 'Hello, world!'],
             ['w', 'create image %s from url %s', 'createImageFromURL', 'image1', 'https://raw.githubusercontent.com/raphamorim/origami.js/master/images/examples/text.png'],
+            [' ', 'create image %s from rect x: %n y: %n w: %n h: %n', 'createImageFromRect', 'image1', 10, 10, 100, 100],
             [' ', 'draw image %s at x: %n y: %n', 'drawImage', 'image1', 100, 100],
         ],
         menus: {
