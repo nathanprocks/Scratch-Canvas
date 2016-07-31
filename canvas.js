@@ -90,7 +90,7 @@
     };
 
     ext.createImageFromRect = function(name, x, y, w, h) {
-        images[name] = ctx.getImageData(x, y, w, x);
+        images[name] = ctx.getImageData(x, y, w, h);
     };
 
     ext.createImageFromURL = function(name, url, callback) {
