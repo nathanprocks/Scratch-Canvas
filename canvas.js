@@ -27,6 +27,7 @@
 
     var gradients = {};
     var images = {};
+    var patterns = {};
 
     ext._shutdown = function() {
         document.body.removeChild(stage);
@@ -103,6 +104,10 @@
         gradients[name] = ctx.createLinearGradient(x1, y1, x2, y2);
     };
 
+    ext.createPattern = function(name, image, repeat) {
+        patterns[name] = ctx.createPattern(images[image], repeat);
+    };
+
     ext.createRadialGradient = function(name, x1, y1, r1, x2, y2, r2) {
         gradients[name] = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);
     };
@@ -129,6 +134,10 @@
 
     ext.fillStyleGradient = function(name) {
         ctx.fillStyle = gradients[name];
+    };
+
+    ext.fillStylePattern = function(name) {
+        ctx.fillStyle = patterns[name];
     };
 
     ext.fillText = function(text, x, y) {
@@ -234,6 +243,10 @@
         ctx.strokeStyle = gradients[name];
     };
 
+    ext.strokeStylePattern = function(name) {
+        ctx.strokeStyle = patterns[name];
+    };
+
     ext.strokeText = function(text, x, y) {
         ctx.strokeText(text, x, y);
     };
@@ -264,9 +277,12 @@
             [' ', 'stroke colour %s', 'strokeStyleColour', 'blue'],
             [' ', 'fill gradient %s', 'fillStyleGradient', 'gradient1'],
             [' ', 'stroke gradient %s', 'strokeStyleGradient', 'gradient1'],
+            [' ', 'fill pattern %s', 'fillStylePattern', 'pattern1'],
+            [' ', 'stroke pattern %s', 'strokeStylePattern', 'pattern1'],
             [' ', 'create linear gradient %s x1: %n y1: %n x2: %n y2: %n', 'createLinearGradient', 'gradient1', 10, 10, 200, 100],
             [' ', 'create radial gradient %s x1: %n y1: %n r1: %n x2: %n y2: %n r2: %n', 'createRadialGradient', 'gradient1', 50, 50, 50, 50, 50, 0],
             [' ', 'gradient %s add colour %s at stop %n%', 'gradientAddColourStop', 'gradient1', 'green', 50],
+            [' ', 'create pattern %s from image %s %m.patternRepeat', 'createPattern', 'pattern1', 'image1', 'repeat'],
             [' ', 'line width %n', 'lineWidth', 10],
             [' ', 'line cap %m.lineCap', 'lineCap', 'butt'],
             [' ', 'line join %m.lineJoin', 'lineJoin', 'miter'],
@@ -312,6 +328,7 @@
             compositeOperation: ['source-over', 'source-in', 'source-out', 'source-atop', 'destination-over', 'destination-in', 'destination-out', 'destination-atop', 'lighter', 'copy', 'xor', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'],
             lineCap: ['butt', 'round', 'square'],
             lineJoin: ['miter', 'bevel', 'round'],
+            patternRepeat: ['repeat', 'repeat-x', 'repeat-y', 'no-repeat'],
             textAlignment: ['start', 'end', 'left', 'center', 'right'],
             textBaseline: ['top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom']
         }
