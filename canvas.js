@@ -153,11 +153,11 @@
     };
 
     ext.imageHeight = function(name) {
-        images[name].height;
+        return images[name].height;
     };
 
     ext.imageWidth = function(name) {
-        images[name].width;
+        return images[name].width;
     };
 
     ext.lineTo = function(x, y) {
