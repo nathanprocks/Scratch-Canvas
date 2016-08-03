@@ -152,6 +152,14 @@
         gradients[name].addColorStop(stop/100, colour);
     };
 
+    ext.imageHeight = function(name) {
+        images[name].height;
+    };
+
+    ext.imageWidth = function(name) {
+        images[name].width;
+    };
+
     ext.lineTo = function(x, y) {
         ctx.lineTo(x, y);
     };
@@ -321,6 +329,8 @@
             ['w', 'create image %s from url %s', 'createImageFromURL', 'image1', 'https://raw.githubusercontent.com/raphamorim/origami.js/master/images/examples/text.png'],
             [' ', 'create image %s from rect x: %n y: %n w: %n h: %n', 'createImageFromRect', 'image1', 10, 10, 100, 100],
             [' ', 'draw image %s at x: %n y: %n', 'drawImage', 'image1', 100, 100],
+            ['r', 'image %s width', 'imageWidth', 'image1'],
+            ['r', 'image %s height', 'imageHeight', 'image1'],
         ],
         menus: {
             angleUnit: ['degrees', 'radians'],
