@@ -82,14 +82,6 @@
         return '#' + hex;
     };
 
-    ext.convertXCoordinate = function(x) {
-        return x + 240;
-    };
-
-    ext.convertYCoordinate = function(y) {
-        return y * -1 + 180;
-    };
-
     ext.createImageFromRect = function(name, x, y, w, h) {
         images[name] = ctx.getImageData(x, y, w, h);
     };
@@ -279,8 +271,6 @@
         blocks: [
             [' ', 'clear canvas', 'clear'],
             [' ', 'refresh canvas', 'refresh'],
-            ['r', 'convert scratch coordinate x: %n', 'convertXCoordinate', 0],
-            ['r', 'convert scratch coordinate y: %n', 'convertYCoordinate', 0],
             [' ', 'fill colour %s', 'fillStyleColour', 'red'],
             [' ', 'stroke colour %s', 'strokeStyleColour', 'blue'],
             [' ', 'fill gradient %s', 'fillStyleGradient', 'gradient1'],
