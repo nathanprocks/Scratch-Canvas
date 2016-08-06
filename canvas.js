@@ -65,6 +65,10 @@
         ctx.clearRect(x, y, w, h);
     };
 
+    ext.clip = function() {
+        ctx.clip();
+    };
+
     ext.closePath = function() {
         ctx.closePath();
     };
@@ -307,6 +311,7 @@
             [' ', 'stroke rect x: %n y: %n w: %n h: %n', 'strokeRect', 0, 0, 100, 100],
             [' ', 'begin path', 'beginPath'],
             [' ', 'close path', 'closePath'],
+            [' ', 'clip', 'clip'],
             ['b', 'is point x: %n y: %n in path', 'isPointInPath'],
             ['b', 'is point x: %n y: %n in stroke', 'isPointInStroke'],
             [' ', 'move to x: %n y: %n', 'moveTo', 20, 20],
